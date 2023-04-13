@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from statsmodels.stats.proportion import proportions_ztest
+from scipy.stats import ttest_ind
 
 
 chat_id = 411809593 # Ваш chat ID, не меняйте название переменной
@@ -12,6 +12,6 @@ def solution(x_success: int,
     a = 0.02
     cnts = [x_cnt, y_cnt]
     successes = [x_success, y_success]
-    p = proportions_ztest(successes, cnts, alternative = 'larger')[1]
+    p = ttest_ind(successes, cnts)[1]
     otv = p < a
     return otv
